@@ -9,10 +9,18 @@
 
 ## Скриншоты
 
-> Добавьте скриншоты в папку `docs/screenshots/` и раскомментируйте строки ниже.
 
-<!-- ![Форма поиска](docs/screenshots/search-form.png) -->
-<!-- ![Результаты поиска](docs/screenshots/search-results.png) -->
+### Форма поиска
+![Форма поиска](screenshots/search-form.png)
+
+### Результаты поиска
+![Результаты поиска](screenshots/results-page.png)
+
+### Сортировка туров
+![Сортировка туров](screenshots/sorting.png)
+
+### API документация
+![API документация](screenshots/api-docs.png)
 
 ---
 
