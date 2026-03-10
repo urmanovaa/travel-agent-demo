@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Подбор туров</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="page">
+        <div class="header">
+            <h1>Подбор туров</h1>
+            <p>Заполните параметры и найдите подходящий тур</p>
+        </div>
+
+        <div class="card">
+            <form method="post" action="/search" class="form-grid">
+
+                <div class="form-group">
+                    <label for="country">Страна</label>
+                    <select id="country" name="country" required>
+                        <option value="">Выберите страну</option>
+                        <option value="Турция">Турция</option>
+                        <option value="Египет">Египет</option>
+                        <option value="ОАЭ">ОАЭ</option>
+                        <option value="Таиланд">Таиланд</option>
+                        <option value="Мальдивы">Мальдивы</option>
+                        <option value="Кипр">Кипр</option>
+                        <option value="Греция">Греция</option>
+                        <option value="Доминикана">Доминикана</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="departure_city">Город вылета</label>
+                    <select id="departure_city" name="departure_city" required>
+                        <option value="">Выберите город</option>
+                        <option value="Москва">Москва</option>
+                        <option value="Санкт-Петербург">Санкт-Петербург</option>
+                        <option value="Казань">Казань</option>
+                        <option value="Екатеринбург">Екатеринбург</option>
+                        <option value="Новосибирск">Новосибирск</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="date_from">Дата с</label>
+                    <input type="date" id="date_from" name="date_from" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="date_to">Дата по</label>
+                    <input type="date" id="date_to" name="date_to" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="nights">Ночей</label>
+                    <input type="number" id="nights" name="nights" min="1" max="30" value="7" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="budget">Бюджет (₽)</label>
+                    <input type="number" id="budget" name="budget" min="0" step="1000" placeholder="150 000" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="adults">Взрослых</label>
+                    <input type="number" id="adults" name="adults" min="1" max="6" value="2" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="children">Детей</label>
+                    <input type="number" id="children" name="children" min="0" max="4" value="0" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="meal_type">Питание</label>
+                    <select id="meal_type" name="meal_type" required>
+                        <option value="AI">AI — Всё включено</option>
+                        <option value="UAI">UAI — Ультра всё включено</option>
+                        <option value="FB">FB — Полный пансион</option>
+                        <option value="HB">HB — Полупансион</option>
+                        <option value="BB">BB — Завтраки</option>
+                        <option value="RO">RO — Без питания</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="hotel_rating">Рейтинг отеля</label>
+                    <select id="hotel_rating" name="hotel_rating" required>
+                        <option value="3">3 звезды</option>
+                        <option value="4">4 звезды</option>
+                        <option value="5" selected>5 звёзд</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-submit">Подобрать туры</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

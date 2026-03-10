@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Результаты поиска</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="page">
+        <div class="header">
+            <h1>Результаты поиска</h1>
+        </div>
+
+        <div class="card">
+            <div class="params-grid">
+                <div class="param-item">
+                    <span class="param-label">Страна</span>
+                    <span class="param-value">{{ data.country }}</span>
+                </div>
+                <div class="param-item">
+                    <span class="param-label">Город вылета</span>
+                    <span class="param-value">{{ data.departure_city }}</span>
+                </div>
+                <div class="param-item">
+                    <span class="param-label">Дата с</span>
+                    <span class="param-value">{{ data.date_from }}</span>
+                </div>
+                <div class="param-item">
+                    <span class="param-label">Дата по</span>
+                    <span class="param-value">{{ data.date_to }}</span>
+                </div>
+                <div class="param-item">
+                    <span class="param-label">Ночей</span>
+                    <span class="param-value">{{ data.nights }}</span>
+                </div>
+                <div class="param-item">
+                    <span class="param-label">Бюджет</span>
+                    <span class="param-value">{{ "{:,}".format(data.budget).replace(",", " ") }} ₽</span>
+                </div>
+                <div class="param-item">
+                    <span class="param-label">Взрослых</span>
+                    <span class="param-value">{{ data.adults }}</span>
+                </div>
+                <div class="param-item">
+                    <span class="param-label">Детей</span>
+                    <span class="param-value">{{ data.children }}</span>
+                </div>
+                <div class="param-item">
+                    <span class="param-label">Питание</span>
+                    <span class="param-value">{{ data.meal_type }}</span>
+                </div>
+                <div class="param-item">
+                    <span class="param-label">Рейтинг отеля</span>
+                    <span class="param-value">{{ data.hotel_rating }} ★</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="tours-header">
+            <h2>Найденные туры</h2>
+            <div class="tours-controls">
+                <span class="tours-count">{{ tours|length }} шт.</span>
+                {% if tours %}
+                <form method="post" action="/search" class="sort-form">
+                    <input type="hidden" name="country" value="{{ data.country }}">
+                    <input type="hidden" name="departure_city" value="{{ data.departure_city }}">
+                    <input type="hidden" name="date_from" value="{{ data.date_from }}">
+                    <input type="hidden" name="date_to" value="{{ data.date_to }}">
+                    <input type="hidden" name="nights" value="{{ data.nights }}">
+                    <input type="hidden" name="budget" value="{{ data.budget }}">
+                    <input type="hidden" name="adults" value="{{ data.adults }}">
+                    <input type="hidden" name="children" value="{{ data.children }}">
+                    <input type="hidden" name="meal_type" value="{{ data.meal_type }}">
+                    <input type="hidden" name="hotel_rating" value="{{ data.hotel_rating }}">
+                    <select name="sort_by" onchange="this.form.submit()">
+                        <option value="price_asc" {{ 'selected' if sort_by == 'price_asc' }}>Сначала дешёвые</option>
+                        <option value="price_desc" {{ 'selected' if sort_by == 'price_desc' }}>Сначала дорогие</option>
+                        <option value="rating_desc" {{ 'selected' if sort_by == 'rating_desc' }}>По рейтингу</option>
+                    </select>
+                </form>
+                {% endif %}
+            </div>
+        </div>
+
+        {% if tours %}
+            {% for tour in tours %}
+            <div class="tour-card">
+                <div class="tour-card-header">
+                    <h3>{{ tour.hotel_name }}</h3>
+                    <div class="tour-rating">{{ tour.hotel_rating }} ★</div>
+                </div>
+                <div class="tour-meta">
+                    <div class="tour-meta-item">
+                        Страна
+                        <span>{{ tour.country }}</span>
+                    </div>
+                    <div class="tour-meta-item">
+                        Ночей
+                        <span>{{ tour.nights }}</span>
+                    </div>
+                    <div class="tour-meta-item">
+                        Питание
+                        <span>{{ tour.meal_type }}</span>
+                    </div>
+                </div>
+                <div class="tour-footer">
+                    <div class="tour-price">{{ "{:,}".format(tour.price).replace(",", " ") }} ₽</div>
+                    <div class="tour-reason">{{ tour.short_reason }}</div>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <div class="card no-results">
+                <p>По вашим параметрам туры не найдены.</p>
+                <p>Попробуйте увеличить бюджет или изменить параметры поиска.</p>
+            </div>
+        {% endif %}
+
+        <a href="/" class="back-link">← Новый поиск</a>
+    </div>
+</body>
+</html>

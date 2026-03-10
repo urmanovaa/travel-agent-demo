@@ -1,0 +1,348 @@
+/* ── Reset & Base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: linear-gradient(135deg, #e8f0fe 0%, #f0f4f8 50%, #e8ecf4 100%);
+    color: #1a202c;
+    min-height: 100vh;
+    padding: 40px 16px 60px;
+}
+
+/* ── Layout ── */
+.page {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+/* ── Header ── */
+.header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.header h1 {
+    font-size: 32px;
+    font-weight: 800;
+    color: #1a365d;
+    letter-spacing: -0.5px;
+}
+
+.header p {
+    margin-top: 8px;
+    font-size: 15px;
+    color: #718096;
+}
+
+/* ── Cards ── */
+.card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.04);
+    padding: 32px;
+}
+
+/* ── Form ── */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #4a5568;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group select {
+    padding: 11px 14px;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 15px;
+    color: #1a202c;
+    background: #f7fafc;
+    transition: all 0.2s ease;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.form-group select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23718096' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #4299e1;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(66,153,225,0.12);
+}
+
+.form-group input::placeholder {
+    color: #a0aec0;
+}
+
+/* ── Button ── */
+.btn-submit {
+    grid-column: 1 / -1;
+    margin-top: 8px;
+    padding: 14px 24px;
+    background: linear-gradient(135deg, #4299e1, #3182ce);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    letter-spacing: 0.3px;
+}
+
+.btn-submit:hover {
+    background: linear-gradient(135deg, #3182ce, #2b6cb0);
+    box-shadow: 0 4px 12px rgba(66,153,225,0.35);
+    transform: translateY(-1px);
+}
+
+.btn-submit:active {
+    transform: translateY(0);
+}
+
+/* ── Results: params summary ── */
+.section-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #2d3748;
+    margin: 36px 0 16px;
+}
+
+.params-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+}
+
+.param-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 16px;
+    border-bottom: 1px solid #edf2f7;
+    font-size: 14px;
+}
+
+.param-item:nth-child(odd) {
+    border-right: 1px solid #edf2f7;
+}
+
+.param-label {
+    color: #718096;
+}
+
+.param-value {
+    font-weight: 600;
+    color: #2d3748;
+}
+
+/* ── Tour cards ── */
+.tours-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin: 36px 0 16px;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tours-header h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #2d3748;
+}
+
+.tours-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.tours-count {
+    font-size: 14px;
+    color: #718096;
+    background: #edf2f7;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.sort-form {
+    display: inline;
+}
+
+.sort-form select {
+    padding: 6px 32px 6px 12px;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #4a5568;
+    background: #fff;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23718096' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+.sort-form select:focus {
+    outline: none;
+    border-color: #4299e1;
+}
+
+.tour-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.04);
+    padding: 24px 28px;
+    margin-bottom: 16px;
+    border-left: 4px solid #4299e1;
+    transition: box-shadow 0.2s ease;
+}
+
+.tour-card:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.06);
+}
+
+.tour-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+
+.tour-card-header h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a365d;
+}
+
+.tour-rating {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: #fefcbf;
+    color: #975a16;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 8px;
+    white-space: nowrap;
+}
+
+.tour-meta {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.tour-meta-item {
+    font-size: 13px;
+    color: #718096;
+}
+
+.tour-meta-item span {
+    display: block;
+    font-size: 15px;
+    font-weight: 600;
+    color: #2d3748;
+    margin-top: 2px;
+}
+
+.tour-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 16px;
+    border-top: 1px solid #edf2f7;
+}
+
+.tour-price {
+    font-size: 24px;
+    font-weight: 800;
+    color: #2b6cb0;
+}
+
+.tour-reason {
+    font-size: 13px;
+    color: #fff;
+    background: #48bb78;
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    max-width: 55%;
+    text-align: right;
+}
+
+/* ── No results ── */
+.no-results {
+    text-align: center;
+    padding: 40px 24px;
+}
+
+.no-results p:first-child {
+    font-size: 16px;
+    font-weight: 600;
+    color: #4a5568;
+    margin-bottom: 8px;
+}
+
+.no-results p:last-child {
+    font-size: 14px;
+    color: #a0aec0;
+}
+
+/* ── Back link ── */
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 28px;
+    padding: 10px 20px;
+    color: #4299e1;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    border: 1.5px solid #bee3f8;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+}
+
+.back-link:hover {
+    background: #ebf8ff;
+    border-color: #90cdf4;
+}
+
+/* ── Responsive ── */
+@media (max-width: 540px) {
+    .form-grid { grid-template-columns: 1fr; }
+    .params-grid { grid-template-columns: 1fr; }
+    .param-item:nth-child(odd) { border-right: none; }
+    .tour-meta { grid-template-columns: 1fr 1fr; }
+    .tour-footer { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .tour-reason { max-width: 100%; text-align: left; }
+}
