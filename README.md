@@ -31,6 +31,7 @@
 - **Карточки результатов** — название отеля, цена, характеристики и причина рекомендации
 - **Сортировка** — по цене (дешёвые / дорогие) и по рейтингу отеля
 - **REST API** — endpoint `POST /api/search` для интеграции с внешними системами
+- **Логирование** — запись действий и ошибок в файл `logs/app.log` и в консоль
 - **Автодокументация** — Swagger UI на `/docs`
 
 ---
@@ -44,6 +45,7 @@
 | Jinja2 | Шаблонизатор HTML |
 | Pydantic | Валидация данных |
 | Uvicorn | ASGI-сервер |
+| logging | Логирование (стандартная библиотека) |
 | HTML + CSS | Интерфейс (без фреймворков) |
 
 ---
@@ -55,6 +57,7 @@ TravelAgent/
 ├── app/
 │   ├── __init__.py
 │   ├── main.py              # Точка входа FastAPI
+│   ├── logger_config.py     # Настройка логирования
 │   ├── api/
 │   │   ├── __init__.py
 │   │   └── routes.py         # Маршруты: веб-страницы и API
@@ -66,6 +69,8 @@ TravelAgent/
 │   └── templates/
 │       ├── index.html         # Форма поиска
 │       └── results.html       # Страница результатов
+├── logs/
+│   └── app.log               # Лог-файл (создаётся автоматически)
 ├── requirements.txt
 ├── .gitignore
 └── README.md
@@ -78,8 +83,8 @@ TravelAgent/
 ### 1. Клонировать репозиторий
 
 ```bash
-git clone https://github.com/your-username/TravelAgent.git
-cd TravelAgent
+git clone https://github.com/urmanovaa/travel-agent-demo.git
+cd travel-agent-demo
 ```
 
 ### 2. Создать виртуальное окружение
@@ -177,6 +182,22 @@ curl -X POST http://127.0.0.1:8000/api/search \
 | `price_asc` | Сначала дешёвые (по умолчанию) |
 | `price_desc` | Сначала дорогие |
 | `rating_desc` | По рейтингу отеля |
+
+---
+
+## Логирование
+
+Проект использует стандартный модуль `logging` Python. Настройка централизована в `app/logger_config.py`.
+
+- Логи пишутся в файл `logs/app.log` и в консоль одновременно
+- Папка `logs/` создаётся автоматически при запуске
+- Формат: `2026-03-15 11:07:46 - INFO - app.api.routes - Search started: country=Турция, budget=150000`
+
+| Уровень | Что логируется |
+|---|---|
+| INFO | Старт приложения, входящие запросы, результаты поиска |
+| WARNING | Пустые результаты, неизвестные параметры сортировки |
+| ERROR | Ошибки обработки запросов (с полным traceback) |
 
 ---
 

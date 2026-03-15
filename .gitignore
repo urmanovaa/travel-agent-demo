@@ -12,6 +12,8 @@ __pycache__/
 .vscode/
 .cursor/
 
+logs/
+
 *.egg-info/
 dist/
 build/
